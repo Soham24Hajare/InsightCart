@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        /* Styles for Navbar */
+        .navbar {
+            background-color: #4B0082;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+        .navbar a:hover {
+            color: #ffd700; /* Gold */
+        }
+        /* Styles for Footer */
+        .footer {
+            background-color: #4B0082; /* Indigo */
+            color: #fff;
+            padding: 5px;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            bottom: 0;
+            font-size: 14px;
+        }
+
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+        /* CSS for product details page */
+        .product-details {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .product-details h2 {
+            margin-top: 0;
+        }
+        .product-image {
+            width: 200px; /* Set the width to your desired size */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 5px; /* Optional: Add border radius for rounded corners */
+            margin-bottom: 20px;
+        }
+        .associated-products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .associated-product {
+            flex: 1;
+            max-width: 200px;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .associated-product h4 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <h1><a href="/home">InsightCart</a></h1>
+        </div>
+        <div class="navbar-links">
+            <a href="/cart.html">Cart</a>
+            <a href="sales_prediction.html">Sales Prediction</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="about.html">About Us</a>
+  
+            <!-- Add Product Button -->
+            <a href="/add_product_form">Add Product</a>
+        </div>
+    </div>
+    <!-- Product Details -->
+    <div class="product-details">
+        <h2>{{ product.name }}</h2>
+        <img class="product-image" src="{{ product.image }}" alt="{{ product.name }}">
+        <p>Price: ${{ product.price }}</p>
+        <!-- Add any additional product details here -->
+        <form action="/add_to_cart" method="post">
+            <input type="hidden" name="product_id" value="{{ product.id }}">
+            <button type="submit">Add to Cart</button>
+        </form>
+
+        {% if associated_products %}
+        <!-- Associated Products Details -->
+        <h3> Frequently Bought Together</h3>
+        <div class="associated-products">
+            {% for associated_product in associated_products %}
+            <div class="associated-product">
+                <h4>{{ associated_product.name }}</h4>
+                <img class="product-image" src="{{ associated_product.image }}" alt="{{ associated_product.name }}">
+                <p>Price: ${{ associated_product.price }}</p>
+                <!-- Add any additional associated product details here -->
+                <form action="/add_to_cart" method="post">
+                    <input type="hidden" name="product_id" value="{{ associated_product.id }}">
+                    <button type="submit">Add to Cart</button>
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    <footer class="footer">
+        <p>&copy; 2024 My E-Commerce. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

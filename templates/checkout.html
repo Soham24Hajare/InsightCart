@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        /* Styles for Navbar */
+        .navbar {
+            background-color: #4B0082;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+        .navbar a:hover {
+            color: #ffd700; /* Gold */
+        }
+        /* Styles for Footer */
+        .footer {
+            background-color: #4B0082; /* Indigo */
+            color: #fff;
+            padding: 5px;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            font-size: 14px;
+        }
+        /* Styles for Checkout Page */
+        .checkout-container {
+            padding: 20px;
+        }
+        .item-details {
+            margin-bottom: 10px;
+        }
+        .total-bill {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .submit {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <h1><a href="/home">InsightCart</a></h1>
+        </div>
+        <div class="navbar-links">
+            <a href="/cart.html">Cart</a>
+            <a href="sales_prediction.html">Sales Prediction</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="about.html">About Us</a>
+
+            <!-- Add Product Button -->
+            <a href="/add_product_form">Add Product</a>
+        </div>
+    </div>
+    <div class="checkout-container">
+        <h1>Checkout</h1>
+        <!-- Cart Items -->
+        <div class="item-details">
+            <h3>Cart Items:</h3>
+            {% for cart_item in cart_items %}
+            <div>{{ cart_item.name }} - ${{ cart_item.price }}</div>
+            {% endfor %}
+        </div>
+        <!-- Total Bill -->
+        <div class="total-bill">
+            <h3>Total Bill: ${{ total_bill }}</h3>
+        </div>
+        <form action="/create-checkout-session" method="post">
+            <button type = "submit" id="checkout-button">Pay Here</button>
+        </from>   
+    </div>
+    <footer class="footer">
+        <p>&copy; 2024 My E-Commerce. All rights reserved.</p>
+    </footer>
+</body>
+</html>

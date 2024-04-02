@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        /* Styles for Cart Page */
+        .navbar{
+            background-color: #4B0082;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+        .navbar a:hover {
+            color: #ffd700; /* Gold */
+        }
+        .cart-container {
+            padding: 20px;
+        }
+        .cart-item {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cart-item img {
+            width: 100px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .cart-item-details {
+            display: flex;
+            align-items: center;
+        }
+        .cart-item-details h3 {
+            margin: 0;
+        }
+        .delete-btn {
+            background-color: #ff6347;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .checkout-btn {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .update-btn {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+                
+        
+        
+        
+        
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <h1><a href="/home">InsightCart</a></h1>
+        </div>
+        <div class="navbar-links">
+            <a href="/cart.html">Cart</a>
+            <a href="sales_prediction.html">Sales Prediction</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="about.html">About Us</a>
+
+            <!-- Add Product Button -->
+            <a href="/add_product_form">Add Product</a>
+        </div>
+    </div>
+    <div class="cart-container">
+        <h1>Shopping Cart</h1>
+        <!-- Cart Items -->
+        {% for cart_item in cart_items %}
+        <div class="cart-item" id="item_{{ cart_item.id }}">
+            <div class="cart-item-details">
+                <img src="{{ cart_item.image }}" alt="{{ cart_item.name }}">
+                <h3>{{ cart_item.name }}</h3>
+            </div>
+            <div>
+                <p id="price_{{ cart_item.id }}">${{ cart_item.price }}</p>
+                <!-- <button class="update-btn" onclick="updateQuantity('{{ cart_item.id }}', -1)">-</button>
+                <span id="quantity_{{ cart_item.id }}">{{ cart_item.quantity }}</span>
+                <button class="update-btn" onclick="updateQuantity('{{ cart_item.id }}', 1)">+</button> -->
+            </div>
+            <button class="delete-btn" onclick="deleteItem('{{ cart_item.product_id }}')">Delete</button>
+        </div>
+        {% endfor %}
+        <!-- Checkout Button -->
+        <button class="checkout-btn" onclick="redirectToCheckout()">Checkout</button>
+    </div>
+
+    <script>
+        function deleteItem(productId) {
+            // Remove the item from the DOM
+            var itemElement = document.getElementById("item_" + productId);
+            if (itemElement) {
+                itemElement.remove();
+            }
+    
+            // Send a request to delete the item from the database
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/delete-item", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log("Item deleted successfully from the database");
+                }
+            };
+            xhr.send(JSON.stringify({ productId: productId }));
+        }
+    
+        function updateQuantity(cartItemId, change) {
+            var quantityElement = document.getElementById("quantity_" + cartItemId);
+            var quantity = parseInt(quantityElement.textContent);
+            quantity += change;
+            if (quantity < 1) {
+                quantity = 1;
+            }
+            quantityElement.textContent = quantity;
+    
+            // Update the total price
+            var priceElement = document.getElementById("price_" + cartItemId);
+            var price = parseFloat(priceElement.textContent.replace("$", ""));
+            var price1 = parseFloat(priceElement.textContent.replace("$", ""));
+            var totalPrice = quantity * price; // Corrected calculation
+            priceElement.textContent = "$" + totalPrice.toFixed(2);
+        }
+    
+        function redirectToCheckout() {
+            window.location.href = "/checkout";
+        }
+    </script>
+    
+</body>
+</html>

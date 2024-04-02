@@ -1,0 +1,185 @@
+[
+  {
+    "antecedents": ["ALARM CLOCK BAKELIKE GREEN"],
+    "consequents": ["ALARM CLOCK BAKELIKE RED"],
+    "support": 0.031052886948083454,
+    "confidence": 0.653061224489796,
+    "lift": 12.806462261403134
+  },
+  {
+    "antecedents": ["ALARM CLOCK BAKELIKE RED"],
+    "consequents": ["ALARM CLOCK BAKELIKE GREEN"],
+    "support": 0.031052886948083454,
+    "confidence": 0.6089438629876308,
+    "lift": 12.806462261403135
+  },
+  {
+    "antecedents": ["GREEN REGENCY TEACUP AND SAUCER"],
+    "consequents": ["PINK REGENCY TEACUP AND SAUCER"],
+    "support": 0.03071324599708879,
+    "confidence": 0.6236453201970443,
+    "lift": 16.7798042418552
+  },
+  {
+    "antecedents": ["PINK REGENCY TEACUP AND SAUCER"],
+    "consequents": ["GREEN REGENCY TEACUP AND SAUCER"],
+    "support": 0.03071324599708879,
+    "confidence": 0.8263707571801566,
+    "lift": 16.7798042418552
+  },
+  {
+    "antecedents": ["GREEN REGENCY TEACUP AND SAUCER"],
+    "consequents": ["ROSES REGENCY TEACUP AND SAUCER"],
+    "support": 0.03726346433770015,
+    "confidence": 0.7566502463054188,
+    "lift": 14.629044630726717
+  },
+  {
+    "antecedents": ["ROSES REGENCY TEACUP AND SAUCER"],
+    "consequents": ["GREEN REGENCY TEACUP AND SAUCER"],
+    "support": 0.03726346433770015,
+    "confidence": 0.7204502814258912,
+    "lift": 14.629044630726717
+  },
+  {
+    "antecedents": ["JUMBO BAG PINK POLKADOT"],
+    "consequents": ["JUMBO BAG RED RETROSPOT"],
+    "support": 0.04002911208151383,
+    "confidence": 0.6773399014778325,
+    "lift": 6.673028379282088
+  },
+  {
+    "antecedents": ["JUMBO STORAGE BAG SUKI"],
+    "consequents": ["JUMBO BAG RED RETROSPOT"],
+    "support": 0.03512857836001941,
+    "confidence": 0.6114864864864865,
+    "lift": 6.024252622603483
+  },
+  {
+    "antecedents": ["Tea"],
+    "consequents": ["Sugar","Milk"],
+    "support": 0.031052886948083454,
+    "confidence": 0.653061224489796,
+    "lift": 12.806462261403134
+  },
+  {
+    "antecedents": ["Flour"],
+    "consequents": ["Lentils","Rice"],
+    "support": 0.031052886948083454,
+    "confidence": 0.6089438629876308,
+    "lift": 12.806462261403135
+  },
+  {
+    "antecedents": ["Rice"],
+    "consequents": ["Lentils","Cooking Oil","Yogurt"],
+    "support": 0.03071324599708879,
+    "confidence": 0.6236453201970443,
+    "lift": 16.7798042418552
+  },
+  {
+    "antecedents": ["Cereal"],
+    "consequents": ["Milk", "Bread", "Bowl"],
+    "support": 0.03071324599708879,
+    "confidence": 0.8263707571801566,
+    "lift": 16.7798042418552
+  },
+  {
+    "antecedents": ["Milk"],
+    "consequents": ["Sugar","Cereal","Bread"],
+    "support": 0.03726346433770015,
+    "confidence": 0.7566502463054188,
+    "lift": 14.629044630726717
+  },
+  {
+    "antecedents": ["Bread"],
+    "consequents": ["Butter","Milk"],
+    "support": 0.03726346433770015,
+    "confidence": 0.7204502814258912,
+    "lift": 14.629044630726717
+  },
+  {
+    "antecedents": ["Pasta"],
+    "consequents": ["Pasta Sauce","Cheese"],
+    "support": 0.04002911208151383,
+    "confidence": 0.6773399014778325,
+    "lift": 6.673028379282088
+  },
+  {
+    "antecedents": ["Yogurt"],
+    "consequents": ["Rice","Pickle"],
+    "support": 0.03512857836001941,
+    "confidence": 0.6114864864864865,
+    "lift": 6.024252622603483
+  },
+  {
+    "antecedents": ["Lentils"],
+    "consequents": ["Spices","Rice","Cooking Oil"],
+    "support": 0.02,
+    "confidence": 0.75,
+    "lift": 9.0
+  },
+  {
+    "antecedents": ["Samsung"],
+    "consequents": ["Phone Cover", "Charger", "Macbook"],
+    "support": 0.02,
+    "confidence": 0.75,
+    "lift": 9.0
+  },
+  {
+    "antecedents": ["Laptop"],
+    "consequents": ["Ram", "Hard Disk"],
+    "support": 0.031052886948083454,
+    "confidence": 0.653061224489796,
+    "lift": 12.806462261403134
+  },
+  {
+    "antecedents": ["TV"],
+    "consequents": ["Remote", "Router"],
+    "support": 0.031052886948083454,
+    "confidence": 0.6089438629876308,
+    "lift": 12.806462261403135
+  },
+  {
+    "antecedents": ["Sofa"],
+    "consequents": ["Chair", "Table"],
+    "support": 0.03071324599708879,
+    "confidence": 0.6236453201970443,
+    "lift": 16.7798042418552
+  },
+  {
+    "antecedents": ["Chair"],
+    "consequents": ["Table", "Pillow"],
+    "support": 0.03071324599708879,
+    "confidence": 0.8263707571801566,
+    "lift": 16.7798042418552
+  },
+  {
+    "antecedents": ["Bed"],
+    "consequents": ["Cupboard", "Blankets", "Pillows"],
+    "support": 0.03726346433770015,
+    "confidence": 0.7566502463054188,
+    "lift": 14.629044630726717
+  },
+  {
+    "antecedents": ["Cupboard"],
+    "consequents": ["Curtains", "Locker"],
+    "support": 0.03726346433770015,
+    "confidence": 0.7204502814258912,
+    "lift": 14.629044630726717
+  },
+  {
+    "antecedents": ["Fridge"],
+    "consequents": ["Tray", "Bottle", "Oven"],
+    "support": 0.04002911208151383,
+    "confidence": 0.6773399014778325,
+    "lift": 6.673028379282088
+  },
+  {
+    "antecedents": ["Book"],
+    "consequents": ["Stationary Kit", "Bag"],
+    "support": 0.03512857836001941,
+    "confidence": 0.6114864864864865,
+    "lift": 6.024252622603483
+  }
+
+]
