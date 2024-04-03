@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My E-Commerce Website</title>
+    <title>InsightCart</title>
     <style>
         body {
             margin: 0;
@@ -85,16 +85,16 @@
     <!-- Navbar -->
     <div class="navbar">
         <div class="logo">
-            <h1><a href="/home">InsightCart</a></h1>
+            <h1><a href="/user_home">InsightCart</a></h1>
         </div>
         <div class="navbar-links">
             <a href="/cart.html">Cart</a>
-            <a href="sales_prediction.html">Sales Prediction</a>
+            
             <a href="contact.html">Contact Us</a>
             <a href="about.html">About Us</a>
 
             <!-- Add Product Button -->
-            <a href="/add_product_form">Add Product</a>
+            
         </div>
     </div>
 
@@ -103,7 +103,7 @@
 <div class="product-listing">
     {% for product in products %}
     <div class="product-card" data-product-id="{{ product.id }}">
-        <div class="delete-icon" onclick="deleteProduct('{{ product.id }}')">X</div>
+        
 
         <a href="{{ url_for('product_details', product_id=product.id) }}">
             <img src="{{ product.image }}" alt="{{ product.name }}">

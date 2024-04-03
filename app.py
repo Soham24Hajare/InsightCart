@@ -24,11 +24,11 @@ with open('association_rules.json', 'r') as file:
     association_rules = json.load(file)
 
 # Load scaler
-scaler_path = r'C:\Users\Soham Hajare\Desktop\InsightCart_OG\models\sc.sav'
+scaler_path = r'C:\Users\Soham Hajare\Downloads\InsightCart_OG\models\sc.sav'
 sc = joblib.load(scaler_path)
 
 # Load model
-model_path = r'C:\Users\Soham Hajare\Desktop\InsightCart_OG\models\lr.sav'
+model_path = r'C:\Users\Soham Hajare\Downloads\InsightCart_OG\models\lr.sav'
 model = joblib.load(model_path)
 
 # Function to initialize the database
@@ -194,7 +194,7 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        email = request.form['email']  # Added email capture
+        email = request.form['email']
         
         conn = sqlite3.connect('users.db')
         c = conn.cursor()
@@ -204,12 +204,17 @@ def login():
         
         if user:
             session['username'] = username
-            session['email'] = email  # Store email in session
-            return redirect(url_for('home'))
+            session['email'] = email
+            if username == "admin":
+                return redirect(url_for('home'))
+            else:
+                return redirect(url_for('user_home'))
         else:
             error = "Invalid credentials. Please try again."
             return render_template('login.html', error=error)
+        
     return render_template('login.html')
+
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -234,9 +239,16 @@ def signup():
     
     return render_template('signup.html')
 
+@app.route('/user_home')
+def user_home():
+    if 'username' in session:
+        products = Product.query.all()
+        return render_template('user_home.html', products=products)
+    return redirect(url_for('login'))
+
 @app.route('/home')
 def home():
-    if 'username' in session:
+    if 'username' in session and session['username'] == 'admin':
         products = Product.query.all()
         return render_template('home.html', products=products)
     return redirect(url_for('login'))
