@@ -24,11 +24,11 @@ with open('association_rules.json', 'r') as file:
     association_rules = json.load(file)
 
 # Load scaler
-scaler_path = r'C:\Users\Soham Hajare\Downloads\InsightCart_OG\models\sc.sav'
+scaler_path = r'C:\Users\Soham Hajare\Desktop\InsightCart\models\sc.sav'
 sc = joblib.load(scaler_path)
 
 # Load model
-model_path = r'C:\Users\Soham Hajare\Downloads\InsightCart_OG\models\lr.sav'
+model_path = r'C:\Users\Soham Hajare\Desktop\InsightCart\models\lr.sav'
 model = joblib.load(model_path)
 
 # Function to initialize the database
@@ -42,16 +42,6 @@ def initialize_database():
 
 # Initialize the database
 initialize_database()
-
-# def delete_all_users():
-#     conn = sqlite3.connect('users.db')
-#     c = conn.cursor()
-#     c.execute('DELETE FROM users')
-#     conn.commit()
-#     conn.close()
-
-# # Call the function to delete all users
-# delete_all_users()
 
 @app.route('/product/<int:product_id>')
 def product_details(product_id):
@@ -185,6 +175,8 @@ def checkout():
     else:
         return redirect(url_for('login'))
 
+
+
 @app.route('/')
 def index():
     return redirect(url_for('login'))
@@ -205,6 +197,7 @@ def login():
         if user:
             session['username'] = username
             session['email'] = email
+            session['role'] = 'admin' if username == 'admin' else 'user'
             if username == "admin":
                 return redirect(url_for('home'))
             else:
@@ -215,13 +208,12 @@ def login():
         
     return render_template('login.html')
 
-
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        email = request.form['email']  # Added email capture
+        email = request.form['email']
         
         conn = sqlite3.connect('users.db')
         c = conn.cursor()
@@ -239,18 +231,25 @@ def signup():
     
     return render_template('signup.html')
 
-@app.route('/user_home')
-def user_home():
-    if 'username' in session:
-        products = Product.query.all()
-        return render_template('user_home.html', products=products)
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    session.pop('email', None)
+    session.pop('role', None)
     return redirect(url_for('login'))
 
 @app.route('/home')
 def home():
-    if 'username' in session and session['username'] == 'admin':
+    if 'username' in session and session.get('role') == 'admin':
         products = Product.query.all()
         return render_template('home.html', products=products)
+    return redirect(url_for('login'))
+
+@app.route('/user_home')
+def user_home():
+    if 'username' in session and session.get('role') == 'user':
+        products = Product.query.all()
+        return render_template('user_home.html', products=products)
     return redirect(url_for('login'))
 
 @app.route('/cart.html')

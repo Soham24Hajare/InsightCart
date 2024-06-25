@@ -1,44 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout</title>
+{% extends 'base.html'%}
+{% block title%}
+Checkout
+{% endblock title%}
+{% block body %}
     <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        /* Styles for Navbar */
-        .navbar {
-            background-color: #4B0082;
-            color: #fff;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-        }
-        .navbar a {
-            color: #fff;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: bold;
-        }
-        .navbar a:hover {
-            color: #ffd700; /* Gold */
-        }
-        /* Styles for Footer */
-        .footer {
-            background-color: #4B0082; /* Indigo */
-            color: #fff;
-            padding: 5px;
-            text-align: center;
-            width: 100%;
-            position: fixed;
-            bottom: 0;
-            font-size: 14px;
-        }
+        
         /* Styles for Checkout Page */
         .checkout-container {
             padding: 20px;
@@ -60,23 +26,7 @@
             margin-top: 20px;
         }
     </style>
-</head>
-<body>
-    <!-- Navbar -->
-    <div class="navbar">
-        <div class="logo">
-            <h1><a href="/home">InsightCart</a></h1>
-        </div>
-        <div class="navbar-links">
-            <a href="/cart.html">Cart</a>
-            <a href="sales_prediction.html">Sales Prediction</a>
-            <a href="contact.html">Contact Us</a>
-            <a href="about.html">About Us</a>
 
-            <!-- Add Product Button -->
-            <a href="/add_product_form">Add Product</a>
-        </div>
-    </div>
     <div class="checkout-container">
         <h1>Checkout</h1>
         <!-- Cart Items -->
@@ -94,8 +44,5 @@
             <button type = "submit" id="checkout-button">Pay Here</button>
         </from>   
     </div>
-    <footer class="footer">
-        <p>&copy; 2024 My E-Commerce. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+
+{% endblock body%}

@@ -1,29 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart</title>
+{% extends 'base.html'%}
+{% block title %}
+Cart
+{% endblock title %}
+{% block body %}
     <style>
-        /* Styles for Cart Page */
-        .navbar{
-            background-color: #4B0082;
-            color: #fff;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-        }
-        .navbar a {
-            color: #fff;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: bold;
-        }
-        .navbar a:hover {
-            color: #ffd700; /* Gold */
-        }
+        
         .cart-container {
             padding: 20px;
         }
@@ -79,23 +60,7 @@
         
         }
     </style>
-</head>
-<body>
-    <!-- Navbar -->
-    <div class="navbar">
-        <div class="logo">
-            <h1><a href="/home">InsightCart</a></h1>
-        </div>
-        <div class="navbar-links">
-            <a href="/cart.html">Cart</a>
-            <a href="sales_prediction.html">Sales Prediction</a>
-            <a href="contact.html">Contact Us</a>
-            <a href="about.html">About Us</a>
 
-            <!-- Add Product Button -->
-            <a href="/add_product_form">Add Product</a>
-        </div>
-    </div>
     <div class="cart-container">
         <h1>Shopping Cart</h1>
         <!-- Cart Items -->
@@ -104,6 +69,7 @@
             <div class="cart-item-details">
                 <img src="{{ cart_item.image }}" alt="{{ cart_item.name }}">
                 <h3>{{ cart_item.name }}</h3>
+                
             </div>
             <div>
                 <p id="price_{{ cart_item.id }}">${{ cart_item.price }}</p>
@@ -160,5 +126,4 @@
         }
     </script>
     
-</body>
-</html>
+{% endblock body %}

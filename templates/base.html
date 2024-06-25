@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%}{% endblock title%} | InsightCart</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/new.css') }}">
+</head>
+<body>
+    {% if session['role'] == 'admin' %}
+        {% include 'admin_navbar.html' %}
+    {% elif session['role'] == 'user' %}
+        {% include 'user_navbar.html' %}
+    {% endif %}
+
+    {% block body %}{% endblock body %}
+
+    
+
+</body>
+
+</html>

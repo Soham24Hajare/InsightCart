@@ -1,151 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - InsightCart</title>
-    <style>
-        /* Resetting default margin and padding */
-        body, h1, h2, h3, p, ul, li {
-            margin: 0;
-            padding: 0;
-        }
+{% extends 'base.html'%}
+{% block title%}
+Contact Us
+{% endblock title%}
+{% block body %}
+<style>
+ 
+    .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
 
-        /* Setting up box-sizing */
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
+    header {
+        background-color: #333;
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+    }
+ 
+    section {
+        padding: 40px 0;
+        text-align: center;
+    }
 
-        /* Global styles */
-        body {
+    h2 {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
 
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #f8f8f8;
-            color: #333;
-        }
+    form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
 
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-        }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: none;
+    }
 
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        /* Styles for Navbar */
-        .navbar {
-            background-color: #4B0082;
-            color: #fff;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-        }
-        .navbar a {
-            color: #fff;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: bold;
-        }
-        .navbar a:hover {
-            color: #ffd700; /* Gold */
-        }
-        /* Styles for Footer */
-        .footer {
-            background-color: #4B0082; /* Indigo */
-            color: #fff;
-            padding: 5px;
-            text-align: center;
-            width: 100%;
-            position: fixed;
-            bottom: 0;
-            font-size: 14px;
-        }
-        section {
-            padding: 40px 0;
-            text-align: center;
-        }
+    textarea {
+        height: 150px;
+    }
 
-        h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
+    input[type="submit"] {
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
 
-        form {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+    input[type="submit"]:hover {
+        background-color: #555;
+    }
 
-        label {
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            resize: none;
-        }
-
-        textarea {
-            height: 150px;
-        }
-
-        input[type="submit"] {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #555;
-        }
-
-        footer p {
-            margin-bottom: 0;
-        }
-    </style>
-</head>
-<body>
-    <!-- Navbar -->
-    <div class="navbar">
-        <div class="logo">
-            <h1><a href="/home">InsightCart</a></h1>
-        </div>
-        <div class="navbar-links">
-            <a href="/cart.html">Cart</a>
-            <a href="sales_prediction.html">Sales Prediction</a>
-            <a href="contact.html">Contact Us</a>
-            <a href="about.html">About Us</a>
-
-            <!-- Add Product Button -->
-            <a href="/add_product_form">Add Product</a>
-        </div>
-    </div>
+</style>
 
     <section id="contact">
         <div class="container">
@@ -163,8 +89,4 @@
         </div>
     </section>
 
-    <footer class="footer">
-        <p>&copy; 2024 My E-Commerce. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+{% endblock body %}

@@ -1,109 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InsightCart</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        /* Styles for Navbar */
-        .navbar {
-            background-color: #4B0082;
-            color: #fff;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-        }
-        .navbar a {
-            color: #fff;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: bold;
-        }
-        .navbar a:hover {
-            color: #ffd700; /* Gold */
-        }
-        /* Styles for Footer */
-        .footer {
-            background-color: #4B0082; /* Indigo */
-            color: #fff;
-            padding: 5px;
-            text-align: center;
-            width: 100%;
-            position: fixed;
-            bottom: 0;
-            font-size: 14px;
-        }
-        /* Styles for Product Cards */
-        .product-listing {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-        }
-        .product-card {
-            width: 200px;
-            height: 320px; /* Set a fixed height for product cards */
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            cursor: pointer; /* Add pointer cursor to indicate clickable */
-            transition: transform 0.3s ease; /* Add smooth transition on hover */
-            position: relative; /* Add position relative to allow absolute positioning of delete icon */
-        }
-        .product-card:hover {
-            transform: translateY(-5px); /* Add slight lift effect on hover */
-        }
-        .product-card img {
-            width: 100%;
-            height: 180px; /* Set height for product images */
-            object-fit: cover; /* Ensure images cover the entire space */
-            border-radius: 5px;
-        }
-        .product-card h3,
-        .product-card p {
-            margin: 5px 0;
-        }
-        .delete-icon {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-            color: red;
-        }
-        
-    </style>
-</head>
-<body>
-    <!-- Navbar -->
-    <div class="navbar">
-        <div class="logo">
-            <h1><a href="/user_home">InsightCart</a></h1>
-        </div>
-        <div class="navbar-links">
-            <a href="/cart.html">Cart</a>
-            
-            <a href="contact.html">Contact Us</a>
-            <a href="about.html">About Us</a>
-
-            <!-- Add Product Button -->
-            
-        </div>
-    </div>
-
-    
-  <!-- Product Listing -->
+{% extends 'base.html'%}
+{% block title %}
+User Home
+{% endblock title %}
+{% block body %}
+<!-- Product Listing -->
 <div class="product-listing">
     {% for product in products %}
     <div class="product-card" data-product-id="{{ product.id }}">
-        
+        <div class="delete-icon" onclick="deleteProduct('{{ product.id }}')">X</div>
 
         <a href="{{ url_for('product_details', product_id=product.id) }}">
             <img src="{{ product.image }}" alt="{{ product.name }}">
@@ -119,14 +23,6 @@
     {% endfor %}
 </div>
 
-
-
-    <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2024 InsightCart. All rights reserved.</p>
-    </footer>
-</body>
-<!-- Add this script at the end of the body section -->
 <script>
     function deleteProduct(productId) {
         if (confirm("Are you sure you want to delete this product?")) {
@@ -161,6 +57,5 @@
         }
     }
 </script>
+{% endblock body%}
 
-
-</html>

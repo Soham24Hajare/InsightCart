@@ -1,0 +1,6 @@
+admin 
+username: admin
+gmail: admin@gmail.com 
+password: ad123
+
+
